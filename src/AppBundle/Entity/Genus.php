@@ -10,5 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Genus
 {
+	private $id;
 
+	private $name;
 }

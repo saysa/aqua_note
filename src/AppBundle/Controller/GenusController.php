@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Genus;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,6 +11,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class GenusController extends Controller
 {
+	/**
+	 * @Route("/genus/new")
+	 */
+    public function newAction()
+    {
+        $genus = new Genus();
+        $genus->setName('Octopus'.rand(1, 100));
+    }
+
     /**
      * @Route("/genus/{genusName}")
      */

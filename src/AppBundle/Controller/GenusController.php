@@ -18,6 +18,8 @@ class GenusController extends Controller
     {
         $genus = new Genus();
         $genus->setName('Octopus'.rand(1, 100));
+
+        $em = $this->getDoctrine()->getManager();
     }
 
     /**

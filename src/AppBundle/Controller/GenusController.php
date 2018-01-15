@@ -34,8 +34,12 @@ class GenusController extends Controller
      */
     public function showAction($genusName)
     {
-        $funFact = 'Octopuses can change the color of their body in just *three-tenths* of a second!';
+        $em = $this->getDoctrine()->getManager();
 
+        $genus = $em->getRepository('AppBundle:Genus')->findOneBy(['name' => $genusName]);
+
+        // todo - add the caching back later
+        /*
         $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
         $key   = md5($funFact);
 
@@ -46,10 +50,10 @@ class GenusController extends Controller
             $funFact = $this->get('markdown.parser')->transform($funFact);
             $cache->save($key, $funFact);
         }
+        */
 
         return $this->render('genus/show.html.twig', [
-            "name" => $genusName,
-            'funFact' => $funFact,
+            'genus' => $genus,
         ]);
     }
 

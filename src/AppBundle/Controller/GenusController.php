@@ -89,4 +89,15 @@ class GenusController extends Controller
 
         return new JsonResponse($data);
     }
+
+    /**
+     * @Route("/genus")
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $genuses = $em->getRepository('AppBundle:Genus')->findAll();
+        dump($genuses);
+    }
 }

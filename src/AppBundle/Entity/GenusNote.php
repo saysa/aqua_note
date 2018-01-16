@@ -18,6 +18,11 @@ class GenusNote
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Genus")
+     */
+    private $genus;
+
+    /**
      * @ORM\Column(type="string")
      */
     private $username;

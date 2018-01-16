@@ -35,7 +35,7 @@ class GenusNote
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createAt;
+    private $createdAt;
 
     /**
      * @return mixed
@@ -88,17 +88,17 @@ class GenusNote
     /**
      * @return mixed
      */
-    public function getCreateAt()
+    public function getCreatedAt()
     {
-        return $this->createAt;
+        return $this->createdAt;
     }
 
     /**
-     * @param mixed $createAt
+     * @param mixed $createdAt
      */
-    public function setCreateAt($createAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->createAt = $createAt;
+        $this->createdAt = $createdAt;
     }
 
     /**

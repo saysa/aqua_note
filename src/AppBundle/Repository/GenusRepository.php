@@ -10,6 +10,7 @@ class GenusRepository extends EntityRepository
     {
         return $this->createQueryBuilder('genus')
                     ->andWhere('genus.isPublished = :isPublished')
-                    ->setParameter('isPublished', true);
+                    ->setParameter('isPublished', true)
+                    ->orderBy('genus.speciesCount', 'DESC');
     }
 }

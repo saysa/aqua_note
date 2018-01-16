@@ -8,6 +8,8 @@ class GenusRepository extends EntityRepository
 {
     public function findAllPublishedOrderedBySize()
     {
-        return $this->createQueryBuilder('genus');
+        return $this->createQueryBuilder('genus')
+                    ->andWhere('genus.isPublished = :isPublished')
+                    ->setParameter('isPublished', true);
     }
 }

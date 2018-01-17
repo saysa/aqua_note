@@ -17,6 +17,11 @@ class Genus
 	 */
 	private $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\GenusNote", mappedBy="genus")
+     */
+	private $notes;
+
 	/**
 	 * @ORM\Column(type="string")
 	 */

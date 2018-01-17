@@ -130,4 +130,5 @@ class GenusNote
     {
         $this->genus = $genus;
     }
+
 }

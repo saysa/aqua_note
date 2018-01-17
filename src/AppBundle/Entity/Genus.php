@@ -149,4 +149,5 @@ class Genus
     {
         return $this->notes;
     }
+
 }

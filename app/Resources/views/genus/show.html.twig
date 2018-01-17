@@ -30,7 +30,7 @@
     <script type="text/babel" src="{{ asset('js/notes.react.js') }}"></script>
     <script type="text/babel">
         ReactDOM.render(
-            <NoteSection url="{{ path('genus_show_notes', {'genusName': genus.name}) }}" />,
+            <NoteSection url="{{ path('genus_show_notes', {'name': genus.name}) }}" />,
             document.getElementById('js-notes-wrapper')
         );
     </script>

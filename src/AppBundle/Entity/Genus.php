@@ -143,7 +143,7 @@ class Genus
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection|GenusNote[]
      */
     public function getNotes()
     {

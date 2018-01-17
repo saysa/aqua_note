@@ -73,6 +73,9 @@ class GenusController extends Controller
     /**
      * @Route("/genus/{name}/notes", name="genus_show_notes")
      * @Method("GET")
+     * @param Genus $genus
+     *
+     * @return JsonResponse
      */
     public function getNotesAction(Genus $genus)
     {

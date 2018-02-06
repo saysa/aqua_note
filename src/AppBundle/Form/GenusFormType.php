@@ -13,8 +13,11 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('subFamily')
             ->add('speciesCount')
             ->add('funFact')
+            ->add('isPublished')
+            ->add('firstDiscoveredAt')
         ;
     }
 

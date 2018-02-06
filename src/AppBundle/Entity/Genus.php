@@ -30,7 +30,8 @@ class Genus
 	private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $subFamily;
 

@@ -14,7 +14,9 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('subFamily')
+            ->add('subFamily', null, [
+                'placeholder' => 'Choose a Sub Family',
+            ])
             ->add('speciesCount')
             ->add('funFact')
             ->add('isPublished', ChoiceType::class, [

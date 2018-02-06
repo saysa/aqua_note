@@ -50,6 +50,11 @@ class Genus
      */
     private $isPublished = true;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $firstDiscoveredAt;
+
     public function __construct()
     {
         $this->notes = new ArrayCollection();

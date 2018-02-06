@@ -38,6 +38,9 @@ class GenusAdminController extends Controller
 
         // only handles data on POST
         $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
 
         return $this->render(
             'admin/genus/new.html.twig', [

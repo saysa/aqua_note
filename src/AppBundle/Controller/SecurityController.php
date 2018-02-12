@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\LoginForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -19,6 +20,8 @@ class SecurityController extends Controller
 
         // last username entered by the user
         $lastUsername = $authUtils->getLastUsername();
+
+        $form = $this->createForm(LoginForm::class, []);
 
         return $this->render(
             'security/login.html.twig',

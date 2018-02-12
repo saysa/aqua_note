@@ -2,10 +2,25 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="user")
+ */
 class User implements UserInterface
 {
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     private $email;
 
     /**

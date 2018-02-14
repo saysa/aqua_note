@@ -46,7 +46,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        // TODO: Implement getCredentials() method.
+        $isLoginSubmit = $request->attributes->get('_route') === 'security_login' && $request->isMethod('POST');
+
+        if ( ! $isLoginSubmit) {
+            // skip authentication
+            return;
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ use AppBundle\Form\LoginForm;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -15,12 +16,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
     private $formFactory;
     private $em;
+    private $router;
 
-    public function __construct(FormFactoryInterface $formFactory, EntityManager $em)
+    public function __construct(FormFactoryInterface $formFactory, EntityManager $em, RouterInterface $router)
     {
 
         $this->formFactory = $formFactory;
         $this->em = $em;
+        $this->router = $router;
     }
 
     /**
@@ -30,7 +33,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     protected function getLoginUrl()
     {
-        // TODO: Implement getLoginUrl() method.
+        $this->router->generate('security_login');
     }
 
     /**

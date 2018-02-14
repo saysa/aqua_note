@@ -2,6 +2,7 @@
 
 namespace AppBundle\Security;
 
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -10,6 +11,13 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
+    private $formFactory;
+
+    public function __construct(FormFactoryInterface $formFactory)
+    {
+
+        $this->formFactory = $formFactory;
+    }
 
     /**
      * Return the URL to the login page.

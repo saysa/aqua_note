@@ -5,15 +5,20 @@ namespace AppBundle\Security;
 use AppBundle\Form\LoginForm;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
+use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
+    use TargetPathTrait;
+
     private $formFactory;
     private $em;
     private $router;
@@ -123,5 +128,18 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         return false;
+    }
+
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    {
+        // if the user hits a secure page and start() was called, this was
+        // the URL they were on, and probably where you want to redirect to
+        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
+
+        if ( ! $targetPath) {
+            $targetPath = $this->router->generate('homepage');
+        }
+
+        return new RedirectResponse($targetPath);
     }
 }

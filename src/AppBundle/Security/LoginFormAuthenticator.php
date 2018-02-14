@@ -2,6 +2,7 @@
 
 namespace AppBundle\Security;
 
+use AppBundle\Form\LoginForm;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -60,6 +61,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             // skip authentication
             return;
         }
+
+        $form = $this->formFactory->create(LoginForm::class);
+        $form->handleRequest($request);
+
+        $data = $form->getData();
+
+        return $data;
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace AppBundle\Security;
 
 use AppBundle\Form\LoginForm;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -13,11 +14,13 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
     private $formFactory;
+    private $em;
 
-    public function __construct(FormFactoryInterface $formFactory)
+    public function __construct(FormFactoryInterface $formFactory, EntityManager $em)
     {
 
         $this->formFactory = $formFactory;
+        $this->em = $em;
     }
 
     /**
@@ -88,6 +91,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $username = $credentials['_username'];
+
+        return $this->em->getRepository('AppBundle:User')->findOneBy(['email' => $username]);
     }
 
     /**

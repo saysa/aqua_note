@@ -30,3 +30,6 @@ security:
 
             logout:
                 path: /logout
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER }

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -19,6 +20,9 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     *
      * @ORM\Column(type="string", unique=true)
      */
     private $email;
@@ -32,6 +36,8 @@ class User implements UserInterface
 
     /**
      * A non-persisted field that's used to create the encoded password.
+     *
+     * @Assert\NotBlank()
      *
      * @var string
      */

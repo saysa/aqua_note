@@ -158,4 +158,12 @@ class User implements UserInterface
     {
         $this->plainPassword = null;
     }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }

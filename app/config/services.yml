@@ -1,5 +1,7 @@
 # Learn more about services, parameters and containers at
 # https://symfony.com/doc/current/service_container.html
+imports:
+    - { resource: legacy_aliases.yml }
 parameters:
     #parameter_name: value
 
@@ -8,7 +10,6 @@ services:
         autowire: true
         autoconfigure: true
     AppBundle\Service\MarkdownTransformer:
-        class: AppBundle\Service\MarkdownTransformer
         arguments: ['@markdown.parser', '@doctrine_cache.providers.my_markdown_cache']
 
     app.markdown_extension:

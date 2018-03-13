@@ -6,6 +6,7 @@ parameters:
 services:
     _defaults:
         autowire: true
+        autoconfigure: true
     AppBundle\Service\MarkdownTransformer:
         class: AppBundle\Service\MarkdownTransformer
         arguments: ['@markdown.parser', '@doctrine_cache.providers.my_markdown_cache']
@@ -13,8 +14,6 @@ services:
     app.markdown_extension:
         class: AppBundle\Twig\MarkdownExtension
         #arguments: ['@app.markdown_transformer']
-        tags:
-            - { name: twig.extension }
 
     AppBundle\DataFixtures\:
         resource: '../../src/AppBundle/DataFixtures'

@@ -9,7 +9,9 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        public: false
     AppBundle\Service\MarkdownTransformer:
+        public: true
         arguments: ['@markdown.parser', '@doctrine_cache.providers.my_markdown_cache']
 
     AppBundle\Twig\MarkdownExtension: ~

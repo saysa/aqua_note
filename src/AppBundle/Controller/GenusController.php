@@ -52,7 +52,7 @@ class GenusController extends Controller
             throw $this->createNotFoundException('genus not found');
         }
 
-        $markdownParser = $this->get('app.markdown_transformer');
+        $markdownParser = $this->get('AppBundle\Service\MarkdownTransformer');
         $funFact = $markdownParser->parse($genus->getFunFact());
 
         $recentNotes = $em->getRepository('AppBundle:GenusNote')->findAllRecentNotesForGenus($genus);

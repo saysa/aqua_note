@@ -1,2 +1,5 @@
 services:
     app.markdown_transformer: '@AppBundle\Service\MarkdownTransformer'
+    app.markdown_extension: '@AppBundle\Twig\MarkdownExtension'
+    app.security.login_form_authenticator: '@AppBundle\Security\LoginFormAuthenticator'
+    app.doctrine.hash_password_listener: '@AppBundle\Doctrine\HashPasswordListener'
